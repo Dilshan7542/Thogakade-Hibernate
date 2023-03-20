@@ -12,9 +12,9 @@ import java.util.List;
 public class OrderDetailDAOImpl implements OrderDetailDAO {
     @Override
     public OrderDetail save(Session session,OrderDetail entity) throws SQLException {
-        System.out.println("is here");
         System.out.println(entity);
             session.save(entity);
+        System.out.println("is here");
             return entity;
     }
 

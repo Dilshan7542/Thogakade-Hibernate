@@ -1,39 +1,37 @@
 package lk.ijse.thogakade.dao.custom.impl;
 
 import lk.ijse.thogakade.dao.custom.OrdersDAO;
-import lk.ijse.thogakade.dao.util.FactoryConfiguration;
 import lk.ijse.thogakade.entity.Orders;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import javax.persistence.criteria.Order;
 import java.sql.SQLException;
 import java.util.List;
 
 public class OrdersDAOImpl implements OrdersDAO {
     @Override
-    public Orders save(Session session,Orders entity) throws SQLException {
-        System.out.println(entity.getOrderId()+"****---------");
-      session.save(entity);
-        System.out.println(entity.getOrderId()+"****");
+    public Orders save(Session session, Orders entity) throws SQLException {
+        session.save(entity);
+        System.out.println(entity.getOrderId() + "****");
 
-     return entity;
+        return entity;
     }
 
+
     @Override
-    public Orders update(Session session,Orders entity) throws SQLException {
+    public Orders update(Session session, Orders entity) throws SQLException {
         session.update(entity);
-        return session.get(Orders.class,entity.getOrderId());
+        return session.get(Orders.class, entity.getOrderId());
     }
 
     @Override
-    public boolean delete(Session session,Integer integer) throws SQLException {
-        session.delete(session.get(Orders.class,integer));
-        return session.get(Orders.class,integer)==null;
+    public boolean delete(Session session, Integer integer) throws SQLException {
+        session.delete(session.get(Orders.class, integer));
+        return session.get(Orders.class, integer) == null;
     }
 
     @Override
-    public Orders search(Session session,Integer integer) throws SQLException {
+    public Orders search(Session session, Integer integer) throws SQLException {
         return session.get(Orders.class, integer);
     }
 
@@ -50,6 +48,6 @@ public class OrdersDAOImpl implements OrdersDAO {
         for (Orders orders : list) {
             return orders.getOrderId();
         }
-           return -1;
+        return -1;
     }
 }
